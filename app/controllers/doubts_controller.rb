@@ -1,4 +1,6 @@
 class DoubtsController < ApplicationController
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   before_action :set_doubt, only: [:show, :edit, :update, :destroy]
 
   # GET /doubts
