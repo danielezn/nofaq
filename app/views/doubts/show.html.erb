@@ -15,5 +15,7 @@
   <%= @doubt.user.email %>
 </p>
 
+<%= render 'offers/form', offer: @offer %>
+
 <%= link_to 'Edit', edit_doubt_path(@doubt) %> |
 <%= link_to 'Back', doubts_path %>

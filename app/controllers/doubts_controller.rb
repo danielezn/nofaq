@@ -11,6 +11,7 @@ class DoubtsController < ApplicationController
   # GET /doubts/1
   # GET /doubts/1.json
   def show
+    @offer = Offer.new
   end
 
   # GET /doubts/new
