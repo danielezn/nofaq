@@ -1,7 +1,6 @@
 class DoubtsController < ApplicationController
-  extend FriendlyId
-  friendly_id :title, use: :slugged
   before_action :set_doubt, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /doubts
   # GET /doubts.json
@@ -27,6 +26,7 @@ class DoubtsController < ApplicationController
   # POST /doubts.json
   def create
     @doubt = Doubt.new(doubt_params)
+    @doubt.user_id = current_user.id
 
     respond_to do |format|
       if @doubt.save
@@ -66,11 +66,11 @@ class DoubtsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doubt
-      @doubt = Doubt.find(params[:id])
+      @doubt = Doubt.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doubt_params
-      params.require(:doubt).permit(:title, :description, :user_id)
+      params.require(:doubt).permit(:title, :description)
     end
 end
