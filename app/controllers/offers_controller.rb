@@ -25,11 +25,12 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.new(offer_params)
-
+    @doubt = Doubt.friendly.find(params[:doubt_id])
+    @offer = @doubt.offers.new(offer_params)
+    @offer.user = current_user
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to @doubt, notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
         format.html { render :new }
@@ -70,6 +71,6 @@ class OffersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
-      params.require(:offer).permit(:currency, :amount, :user_id, :doubt_id)
+      params.require(:offer).permit(:currency, :amount)
     end
 end

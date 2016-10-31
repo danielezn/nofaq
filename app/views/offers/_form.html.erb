@@ -1,5 +1,4 @@
-<%= byebug %>
-<%= form_for(offer) do |f| %>
+<%= form_for [doubt,offer] do |f| %>
   <% if offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -20,16 +19,6 @@
   <div class="field">
     <%= f.label :amount %>
     <%= f.text_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :doubt_id %>
-    <%= f.text_field :doubt_id %>
   </div>
 
   <div class="actions">

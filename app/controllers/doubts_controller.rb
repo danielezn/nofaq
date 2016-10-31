@@ -26,8 +26,7 @@ class DoubtsController < ApplicationController
   # POST /doubts
   # POST /doubts.json
   def create
-    @doubt = Doubt.new(doubt_params)
-    @doubt.user_id = current_user.id
+    @doubt = current_user.doubts.new(doubt_params)
 
     respond_to do |format|
       if @doubt.save

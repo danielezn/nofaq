@@ -14,8 +14,10 @@
   <strong>User:</strong>
   <%= @doubt.user.email %>
 </p>
-
-<%= render 'offers/form', offer: @offer %>
+<p>
+	Ofertas
+</p>
+<%= render 'offers/form', offer: @offer, doubt: @doubt %>
 
 <%= link_to 'Edit', edit_doubt_path(@doubt) %> |
 <%= link_to 'Back', doubts_path %>
