@@ -1,11 +1,11 @@
 class DoubtsController < ApplicationController
-  before_action :set_doubt, only: [:show, :edit, :update, :destroy]
+  before_action :set_doubt, only: [:show, :edit, :update, :destroy, :accept_offer]
   before_action :authenticate_user!
 
   # GET /doubts
   # GET /doubts.json
   def index
-    @doubts = Doubt.all
+    @doubts = (Doubt.public_status | Doubt.where(user_id: current_user.id)).uniq
   end
 
   # GET /doubts/1
@@ -61,6 +61,11 @@ class DoubtsController < ApplicationController
       format.html { redirect_to doubts_url, notice: 'Doubt was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def accept_offer
+    @offer = Offer.find_by_id(params[:offer_id])
+    @doubt.selected_offer = 
   end
 
   private

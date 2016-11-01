@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
     has_many :doubts
     has_many :offers
+
+    enum country: [ :chile, :venezuela ]
+
 end
