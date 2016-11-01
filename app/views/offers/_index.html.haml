@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Offers
+%table
+  %thead
+    %tr
+      %th Currency
+      %th Amount
+      %th User
+      %th Doubt
+      %th{:colspan => "3"}
+  %tbody
+    - offers.each do |offer|
+      %tr
+        %td= offer.currency
+        %td= offer.amount
+        %td= offer.user
+        %td= offer.doubt
+        %td= link_to 'Show', doubt_offer_path(offer.doubt, offer)
+        - if offer.can_crud(current_user.id)
+          %td= link_to 'Edit', edit_doubt_offer_path(offer.doubt, offer)
+          %td= link_to 'Destroy', doubt_offer_path(offer.doubt, offer), method: :delete, data: { confirm: 'Are you sure?' }
+%br

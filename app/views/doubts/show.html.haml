@@ -1,0 +1,23 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @doubt.title
+%p
+  %strong Description:
+  = @doubt.description
+%p
+  %strong User:
+  = @doubt.user.email
+%p
+  %strong Privacy:
+  = @doubt.privacy
+
+- if @doubt.can_offer(current_user.id)
+  %p
+    Ofertar
+  = render 'offers/form', offer: @offer, doubt: @doubt
+- if @doubt.has_offers_for_owner(current_user.id)
+  = render 'offers/index', offers: @doubt.offers
+
+= link_to 'Edit', edit_doubt_path(@doubt)
+= link_to 'Back', doubts_path

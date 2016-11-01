@@ -33,7 +33,7 @@ class OffersController < ApplicationController
         format.html { redirect_to @doubt, notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
-        format.html { render :new }
+        format.html { redirect_to @doubt, notice: @offer.errors }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
