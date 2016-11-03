@@ -63,11 +63,6 @@ class DoubtsController < ApplicationController
     end
   end
 
-  def accept_offer
-    @offer = Offer.find_by_id(params[:offer_id])
-    @doubt.selected_offer = 
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doubt

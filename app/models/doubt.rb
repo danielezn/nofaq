@@ -4,8 +4,8 @@ class Doubt < ApplicationRecord
   friendly_id :title, use: :slugged
 
   belongs_to :user
-  has_many :offers, :class_name => "offer"
-  has_one :selecteld_offer, :class_name => "offer"
+  has_many :offers, :class_name => "Offer"
+  has_one :selected_offer, :class_name => "Offer"
 
   enum privacy: [ :public_status, :private_status ]
 

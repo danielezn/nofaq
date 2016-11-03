@@ -63,6 +63,19 @@ class OffersController < ApplicationController
     end
   end
 
+  def accept_offer
+    offer = Offer.find_by_id(params[:id])
+    doubt = offer.doubt
+    doubt.selected_offer = offer
+    respond_to do |format|
+      if doubt.save!
+          format.html { redirect_to doubt, notice: 'Offer asigned successfully' }
+      else
+          format.html { redirect_to doubt, notice: 'Offer not asigned' }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
