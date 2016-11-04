@@ -16,7 +16,8 @@
   %p
     Ofertar
   = render 'offers/form', offer: @offer, doubt: @doubt
-- if @doubt.has_offers_for_owner(current_user.id)
+- if @doubt.offer_selected?
+- elsif @doubt.has_offers_for_owner(current_user.id)
   = render 'offers/index', doubt: @doubt, offers: @doubt.offers
 
 = link_to 'Edit', edit_doubt_path(@doubt)
