@@ -15,9 +15,10 @@
           %td= offer.currency
           %td= offer.amount
           %td= offer.user.username
-          %td= link_to 'Show', doubt_offer_path(offer.doubt_id, offer)
-          %td= link_to 'Accept', accept_offer_doubt_offer_path(offer.doubt_id, offer)
-          - if offer.can_crud(current_user.id)
-            %td= link_to 'Edit', edit_doubt_offer_path(offer.doubt, offer)
-            %td= link_to 'Destroy', doubt_offer_path(offer.doubt, offer), method: :delete, data: { confirm: 'Are you sure?' }
+          - unless offer.was_selected
+            %td= link_to 'Show', doubt_offer_path(offer.doubt_id, offer)
+            %td= link_to 'Accept', accept_offer_doubt_offer_path(offer.doubt_id, offer)
+            - if offer.can_crud(current_user.id)
+              %td= link_to 'Edit', edit_doubt_offer_path(offer.doubt, offer)
+              %td= link_to 'Destroy', doubt_offer_path(offer.doubt, offer), method: :delete, data: { confirm: 'Are you sure?' }
   %br

@@ -17,7 +17,7 @@
     Ofertar
   = render 'offers/form', offer: @offer, doubt: @doubt
 - if @doubt.has_offers_for_owner(current_user.id)
-  = render 'offers/index', offers: @doubt.offers
+  = render 'offers/index', doubt: @doubt, offers: @doubt.offers
 
 = link_to 'Edit', edit_doubt_path(@doubt)
 = link_to 'Back', doubts_path

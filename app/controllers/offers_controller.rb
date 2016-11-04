@@ -64,9 +64,8 @@ class OffersController < ApplicationController
   end
 
   def accept_offer
-    offer = Offer.find_by_id(params[:id])
-    doubt = offer.doubt
-    doubt.selected_offer = offer
+    doubt = Doubt.find_by_id(params[:doubt_id])
+    doubt.set_selected_offer(params[:id])
     respond_to do |format|
       if doubt.save!
           format.html { redirect_to doubt, notice: 'Offer asigned successfully' }
