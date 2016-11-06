@@ -7,8 +7,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render '/partials/layouts/nav'
+    = render 'partials/layouts/lateral'
     = yield
-    %br
-    - if user_signed_in?
-      = link_to destroy_user_session_path, method: :delete  do
-        = 'Cerrar sesion'
