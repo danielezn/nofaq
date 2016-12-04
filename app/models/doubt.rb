@@ -5,6 +5,7 @@ class Doubt < ApplicationRecord
 
   belongs_to :user
   has_many :offers
+  belongs_to :selected_offer, :class_name => 'Offer'
   has_one :answer
 
   enum privacy: [ :public_status, :private_status ]
