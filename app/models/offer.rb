@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
   belongs_to :doubt
-
+  belongs_to :selected, :class_name => 'Doubt', :foreign_key => 'selected_offer_id'
   # It's just accepted one offer by user
   validates_uniqueness_of :doubt_id, scope: :user_id
 
