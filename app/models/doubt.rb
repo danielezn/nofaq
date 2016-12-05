@@ -9,7 +9,7 @@ class Doubt < ApplicationRecord
   has_one :answer
 
   enum privacy: [ :public_status, :private_status ]
-  enum status: [ :waiting_for_offers, :offer_selected ]
+  enum status: [ :waiting_for_offers, :offer_selected, :answer_ready]
 
   def can_offer user_id
   	 !(has_offers_for_owner user_id) && (offers.where(user_id: user_id).empty?)
@@ -17,10 +17,6 @@ class Doubt < ApplicationRecord
 
   def has_offers_for_owner user_id
   	user_id == self.user_id
-  end
-
-  def selected_offer
-    self.offers.find_by_id(self.selected_offer_id)
   end
 
   def set_selected_offer(offer_id)
