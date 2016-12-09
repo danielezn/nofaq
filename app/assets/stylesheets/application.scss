@@ -1,2 +1,9 @@
+/*
+	*= require_self
+	*= require base/_index
+	*= require components/_index
+	*= require modules/_index
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";

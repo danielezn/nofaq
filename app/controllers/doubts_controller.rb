@@ -5,7 +5,14 @@ class DoubtsController < ApplicationController
   # GET /doubts
   # GET /doubts.json
   def index
-    @doubts = (Doubt.public_status | Doubt.where(user_id: current_user.id)).uniq
+    @doubts = Doubt.public_status.where.not(user_id: current_user.id)
+  end
+
+  def mine
+    @doubts = current_user.doubts
+    respond_to do |format|
+      format.html { render :index }
+    end
   end
 
   # GET /doubts/1

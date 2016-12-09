@@ -1,16 +1,26 @@
-.nav-bar
-	.nav-logo
-		= link_to dashboard_index_path do
+%ul
+	%li
+		= link_to dashboard_index_path, class: 'active' do
 			= 'NoFAQ'
-	.nav-search
-		= 'Buscador ...'
-	.nav-options
-		.direct-messages
+	%li
+		= link_to mine_doubts_path do
+			= 'Mis dudas/respuestas'
+	%li
+		= link_to doubts_path do
+			= 'Dudas globales'
+	%li
+		= link_to doubts_path do
+			= 'Seccion de dudas'
+	%li
+		= link_to dashboard_index_path do
+			= 'Buscador ...'
+	%li.right
+		= link_to dashboard_index_path do
 			= 'Mensajes privados'
-		.real-time-notifications
+	%li.right
+		= link_to dashboard_index_path do
 			= 'Notificaciones'
-		.profile
-			= 'Mi perfil'
-			- if user_signed_in?
-				= link_to destroy_user_session_path, method: :delete  do
-					= 'Cerrar sesion'
+	%li.right
+		- if user_signed_in?
+			= link_to destroy_user_session_path, method: :delete  do
+				= 'Cerrar sesion'
