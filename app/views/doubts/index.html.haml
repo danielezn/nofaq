@@ -13,7 +13,7 @@
       %tr
         %td= doubt.title
         %td= doubt.description
-        %td= doubt.user.email
+        %td= doubt.try(:use).try(:email)
         %td= link_to 'Show', doubt
         %td= link_to 'Edit', edit_doubt_path(doubt)
         %td= link_to 'Destroy', doubt, method: :delete, data: { confirm: 'Are you sure?' }
