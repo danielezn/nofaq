@@ -31,6 +31,8 @@ gem 'sidekiq'
 gem 'devise'
 # Friendly URL
 gem 'friendly_id'
+# Searchkick
+gem 'searchkick'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

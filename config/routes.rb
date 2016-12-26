@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :answers
     collection do
       get :mine
+      post :search
     end
   	resources :offers do
 	  	member do

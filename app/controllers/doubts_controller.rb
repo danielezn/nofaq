@@ -70,6 +70,14 @@ class DoubtsController < ApplicationController
     end
   end
 
+  def search
+    binding.pry
+    @doubts = Doubt.search params[:search_content]
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doubt

@@ -1,21 +1,2 @@
-- doubts = @doubts || doubts
-%p#notice= notice
-%h1 Doubts
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th User
-      %th{:colspan => "3"}
-  %tbody
-    - doubts.each do |doubt|
-      %tr
-        %td= doubt.title
-        %td= doubt.description
-        %td= doubt.try(:use).try(:email)
-        %td= link_to 'Show', doubt
-        %td= link_to 'Edit', edit_doubt_path(doubt)
-        %td= link_to 'Destroy', doubt, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+= render 'doubts_list', doubts: @doubts
 = link_to 'New Doubt', new_doubt_path
